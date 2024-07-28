@@ -22,7 +22,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/data/foodData.json"); // Adjust path if needed
+      const response = await fetch("/data/foodData.json");
       const jsonData: FoodItem[] = await response.json();
       setData(jsonData);
     };
@@ -68,7 +68,7 @@ const Home: React.FC = () => {
           <div className={styles.cardWrap}>
           {visibleData.length > 0 ? (
             visibleData.map((item, index) => (
-              <div className={styles.card}>
+              <div className={styles.card} key={item.hotelName}>
                 <FoodCard
                   key={index}
                   hotelName={item.hotelName}
