@@ -1,0 +1,23 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* width: 20rem; */
+  }
+  
+  .image {
+    width: 100%;
+    height: 15rem;
+    border-radius: 4px;
+  }
+  
+  .hotelName {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color:black;
+  }
+  

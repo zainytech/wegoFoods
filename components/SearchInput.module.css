@@ -1,0 +1,29 @@
+.inputContainer {
+    position: relative;
+    width: 100%;
+    max-width: 25rem;
+  }
+  
+  .inputField {
+    width: 100%;
+    padding: 0.8rem 2rem 0.8rem 2.5rem;
+    border-radius: 1rem;
+    border: 1px solid #e4e3e3;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.04), 0 6px 20px 0 rgba(0, 0, 0, 0.04);
+  }
+  
+  .inputField:focus {
+    border-color: black;
+    outline: none;
+  }
+  
+  .iconContainer {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  

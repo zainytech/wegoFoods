@@ -1,0 +1,17 @@
+.main{
+    background-color: #F7F8FA;
+}
+.mainWrapper{
+    margin: 2rem 2rem;
+}
+.navbarWrapper{
+    margin: 2rem 0rem
+}
+.cardWrap{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
+    /* display: flex;
+    gap:'2rem';
+flex:'flex-wrap' */
+
+}
