@@ -5,13 +5,46 @@
     margin: 2rem 2rem;
 }
 .navbarWrapper{
-    margin: 2rem 0rem
+    margin: 3rem 0rem
 }
 .cardWrap{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem,1fr));
-    /* display: flex;
-    gap:'2rem';
-flex:'flex-wrap' */
-
 }
+.card {
+    max-width: 25rem;
+  }
+.showMoreContainer {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .showMoreButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 0.7rem;
+    transition: background-color 0.3s;
+    border:solid #FFC700 2px;
+    color:black;
+
+  }
+  
+  .showMoreButton:hover {
+    background-color: #FFC700;
+  }
+
+  .noDataMessage {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 2rem;
+  }
+  
+  @media screen and (max-width: 700px){
+    .card {
+        max-width: none;
+      }
+  }

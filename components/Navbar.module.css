@@ -1,6 +1,7 @@
 .navbar {
-    background-color: #f8f8f8;
-    display: inline-block;
+  display: inline-block;
+  overflow: auto;
+  width:100%;
 }
 
 .navList {
@@ -13,10 +14,10 @@
 
 .navItem {
       border: 1px solid #FFC700;
-      /* border-left: 1px solid #FFC700; */
     cursor: pointer;
     padding: 10px 20px;
     transition: background-color 0.3s, color 0.3s;
+    text-wrap:nowrap;
   }
   .navItem:first-child{
     border-top-left-radius: 1rem;
