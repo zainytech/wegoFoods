@@ -23,6 +23,7 @@ This project involved creating a web application using Next.js, TypeScript, HTML
 
 - *API Errors*: The provided APIs returned 404 errors, possibly due to expired links.
   - *Solution*: Mocked the API data using a JSON file to simulate real data and ensure functionality.
+- *Updated API Endpoints*: The issue of broken api endpoints and wrong image urls got resolved and now the data is being fetched from live api endpoints.
 
 ## Live Demo
 [Link to Live Demo](https://wego-two.vercel.app/) – A live version of the application demonstrating its functionality.
@@ -32,7 +33,8 @@ This project involved creating a web application using Next.js, TypeScript, HTML
 ### Code Structure
 
 - components/ – Contains reusable components like SearchInput, Navbar, and FoodCard.
-- pages/ – Contains the main page and other route handlers.
+- app/ – Contains the main page and other route handlers.
+- api/ - Contains the endpoints where the data is being fetched from APIs.
 - public/ – Includes static assets like images and JSON data of food items.
 - No store like Zustand is being used because, from the details of the task, I guessed you wanted to check my basics that’s why I used props drilling to send props.
 
