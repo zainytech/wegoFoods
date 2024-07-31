@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 const CATEGORIES_API_URL = "https://gist.githubusercontent.com/wilson-wego/f7381fcead7a47a7df257a97a033456a/raw/33cd31ce75ba72a809d48944463b53b74b9ccae8/categories.json"
 
-export const GET = async (req:NextApiRequest,res:NextApiResponse) =>{
+export const GET = async (req:any,res:any) =>{
     try {
         const response = await fetch(CATEGORIES_API_URL);
         if (!response.ok) {
