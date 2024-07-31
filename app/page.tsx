@@ -3,35 +3,49 @@
 import { useEffect, useState } from "react";
 import SearchInput from "@/components/SearchInput";
 import Navbar from "@/components/Navbar";
-import FoodCard from "../components/FoodCard";
+import FoodCard from "@/components/FoodCard";
 import styles from "./page.module.css";
-
-interface FoodItem {
-  hotelName: string;
-  image: string;
-  stars: string;
-  time:string;
-  type: string;
-}
+import Loader from "@/components/Spinner";
+import { FoodItem, Category } from "@/components/Interfaces";
 
 const Home: React.FC = () => {
-  const [data, setData] = useState<FoodItem[]>([]);
-  const [selectedOption, setSelectedOption] = useState<string>("All");
+  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string>("All");
   const [visibleItemsCount, setVisibleItemsCount] = useState<number>(9);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("/data/foodData.json");
-      const jsonData: FoodItem[] = await response.json();
-      setData(jsonData);
+    const fetchCategory = async () => {
+      const response = await fetch("/api/category");
+      const data = await response.json();
+      setCategories(data);
     };
 
-    fetchData();
-  }, [data]);
+    const fetchFood = async () => {
+      const response = await fetch("/api/foodItems");
+      const data = await response.json();
+      setFoodItems(data.foods);
+    };
 
-  const handleSelect = (option: string) => {
-    setSelectedOption(option);
+    const initializeData = async () => {
+      try {
+        setIsLoading(true);
+        await fetchCategory();
+        await fetchFood();
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeData();
+  }, []);
+
+  const handleSelect = (categoryId: string) => {
+    setSelectedCategoryId(categoryId);
     setVisibleItemsCount(9);
   };
 
@@ -44,10 +58,10 @@ const Home: React.FC = () => {
     setVisibleItemsCount(9);
   };
 
-  const filteredData = data.filter((item) => {
+  const filteredData = foodItems.filter((item) => {
     const matchesCategory =
-      selectedOption === "All" || item.type === selectedOption;
-    const matchesSearch = item.hotelName
+      selectedCategoryId === "All" || item.categoryId === selectedCategoryId;
+    const matchesSearch = item.restaurant
       .toLowerCase()
       .includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
@@ -63,27 +77,29 @@ const Home: React.FC = () => {
         </div>
         <div>
           <div className={styles.navbarWrapper}>
-            <Navbar onSelect={handleSelect} />
+            <Navbar options={categories} onSelect={handleSelect} />
           </div>
           <div className={styles.cardWrap}>
-          {visibleData.length > 0 ? (
-            visibleData.map((item, index) => (
-              <div className={styles.card} key={item.hotelName}>
-                <FoodCard
-                  key={index}
-                  hotelName={item.hotelName}
-                  image={item.image}
-                  stars={item.stars}
-                  time={item.time}
-                />
-              </div>
-            ))
-          ) : (
-            <p className={styles.noDataMessage}>
-              Sorry, no food items to show here.
-            </p>
-          )}
-
+            {isLoading ? (
+              <Loader />
+            ) : visibleData.length > 0 ? (
+              visibleData.map((item) => (
+                <div className={styles.card} key={item.id}>
+                  <FoodCard
+                    name={item.name}
+                    image={item.imageUrl}
+                    stars={parseFloat(item.rating.toFixed(1)).toString()}
+                    time={`${item.minCookTime}-${item.maxCookTime} mins`}
+                    isNew={item.isNew}
+                    promotion={item.promotion}
+                  />
+                </div>
+              ))
+            ) : (
+              <p className={styles.noDataMessage}>
+                Sorry, no food items to show here.
+              </p>
+            )}
           </div>
           {visibleItemsCount < filteredData.length && (
             <div className={styles.showMoreContainer}>

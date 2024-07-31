@@ -1,33 +1,46 @@
 .card {
-    border: 1px solid #ddd;
-    border-radius: 1rem;
-    margin: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .image {
-    width: 100%;
-    height: 15rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
 
-  }
-  .cardContent{
-    padding:1rem;
-  }
-  .hotelName {
-    margin-top: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    color:black;
-    margin:1rem 0rem;
-  }
-  .stars{
-    background-color: #F7F8FA;
-    padding:0.3rem 1rem;
-    border-radius: 0.5rem;
-    display: inline-block;
-    color:"#666568";
-  }
-  
+.image {
+  width: 100%;
+  height: 15rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.cardContent {
+  padding: 1rem;
+}
+.name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  margin: 1rem 0rem;
+}
+.promotion {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.promoP {
+  padding: 0.5rem 1rem;
+  border-top-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  color: white;
+}
+.stars {
+  background-color: #f7f8fa;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+  color: "#666568";
+}
+.newClr {
+  color: #67ceb9;
+}
