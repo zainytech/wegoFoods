@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
-import styles from './Navbar.module.css';
+import React from "react";
+import styles from "./Navbar.module.css";
+import { useState } from "react";
+import { Category,NavbarProps } from "./Interfaces";
 
-interface NavbarProps {
-  onSelect: (option: string) => void;
-}
-
-const Navbar: React.FC<NavbarProps> = ({ onSelect }) => {
-  const options = ['All', 'Sushi', 'Pizza', 'Burgers','Hot Meals', 'Desserts', 'Drinks'];
-  const [activeOption, setActiveOption] = useState<string>('All'); // Default to 'All'
-
-  const handleClick = (option: string) => {
-    setActiveOption(option);
-    onSelect(option);
-  };
+const Navbar: React.FC<NavbarProps> = ({ options, onSelect }) => {
+  const [activeOption, setActiveOption] = useState<string>("All");
 
   return (
     <nav className={styles.navbar}>
       <ul className={styles.navList}>
-        {options.map(option => (
+        <li
+          onClick={() => {
+            setActiveOption("All")
+            onSelect("All")
+          }}
+          className={`${styles.navItem} ${
+            activeOption === "All" ? styles.active : ""
+          }`}
+        >
+          All
+        </li>
+        {options.map((category) => (
           <li
-            key={option}
-            className={`${styles.navItem} ${activeOption === option ? styles.active : ''}`}
-            onClick={() => handleClick(option)}
+            key={category.id}
+            className={`${styles.navItem} ${
+              activeOption === category.id ? styles.active : ""
+            }`}
+            onClick={() => {
+              onSelect(category.id)
+              setActiveOption(category.id);
+            }}
           >
-            {option}
+            {category.name}
           </li>
         ))}
       </ul>

@@ -1,0 +1,6 @@
+// jest.setup.js
+
+import fetchMock from 'jest-fetch-mock';
+
+global.fetch = fetchMock;
+fetchMock.enableMocks();
