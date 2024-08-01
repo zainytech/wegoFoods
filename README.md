@@ -7,7 +7,7 @@ Test cases have been written to ensure the correctness of components and functio
 
 ## Branches code:
 
-The complete ui code with dunctionality is on branch *master* meanwhile the testcases are on branch *testcase*
+The complete UI code with functionality is on branch *master* meanwhile the testcases are on branch *testcase*.
 
 ## Project Features
 
