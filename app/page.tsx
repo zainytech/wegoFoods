@@ -1,73 +1,23 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import SearchInput from "@/components/SearchInput";
 import Navbar from "@/components/Navbar";
 import FoodCard from "@/components/FoodCard";
 import styles from "./page.module.css";
 import Loader from "@/components/Spinner";
-import { FoodItem, Category } from "@/components/Interfaces";
+import useData from "@/hooks/useData";
 
 const Home: React.FC = () => {
-  const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
-  const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategoryId, setSelectedCategoryId] = useState<string>("All");
-  const [visibleItemsCount, setVisibleItemsCount] = useState<number>(9);
-  const [searchQuery, setSearchQuery] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchCategory = async () => {
-      const response = await fetch("/api/category");
-      const data = await response.json();
-      setCategories(data);
-    };
-
-    const fetchFood = async () => {
-      const response = await fetch("/api/foodItems");
-      const data = await response.json();
-      setFoodItems(data.foods);
-    };
-
-    const initializeData = async () => {
-      try {
-        setIsLoading(true);
-        await fetchCategory();
-        await fetchFood();
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    initializeData();
-  }, []);
-
-  const handleSelect = (categoryId: string) => {
-    setSelectedCategoryId(categoryId);
-    setVisibleItemsCount(9);
-  };
-
-  const handleShowMore = () => {
-    setVisibleItemsCount((prevCount) => prevCount + 9);
-  };
-
-  const handleSearch = (query: string) => {
-    setSearchQuery(query);
-    setVisibleItemsCount(9);
-  };
-
-  const filteredData = foodItems.filter((item) => {
-    const matchesCategory =
-      selectedCategoryId === "All" || item.categoryId === selectedCategoryId;
-    const matchesSearch = item.restaurant
-      .toLowerCase()
-      .includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
-
-  const visibleData = filteredData.slice(0, visibleItemsCount);
+  const {
+    categories,
+    visibleData,
+    visibleItemsCount,
+    filteredData,
+    isLoading,
+    handleSelect,
+    handleShowMore,
+    handleSearch,
+  } = useData();
 
   return (
     <main className="main">
