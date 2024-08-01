@@ -2,7 +2,12 @@
 
 ## Overview
 
-This project involved creating a web application using Next.js, TypeScript, HTML, JSX, and Modular CSS. The application includes features such as a search input, a navigation bar, and food cards. The project has been designed to be responsive and is fully functional. Test cases have been written to ensure the correctness of components and functionality.
+This project involved creating a web application using Next.js, TypeScript, HTML, JSX, and Modular CSS. The application includes features such as a search input, a navigation bar, and food cards. The project has been designed to be responsive and is fully functional.
+Test cases have been written to ensure the correctness of components and functionality.
+
+## Branches code:
+
+The complete ui code with dunctionality is on branch *master* meanwhile the testcases are on branch *testcase*
 
 ## Project Features
 
