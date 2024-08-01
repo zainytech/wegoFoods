@@ -10,6 +10,7 @@ This project involved creating a web application using Next.js, TypeScript, HTML
 - *Search Input*: Allows users to filter food items based on the search query.
 - *Navbar*: Enables users to select different categories to filter food items.
 - *Food Cards*: Show food details including the hotel name, image, stars, and time.
+- *Spinner*: To show a loading spiner while the data is being fetched.
 
 ## Technology Stack
 
@@ -44,7 +45,7 @@ Test cases are written using Jest to ensure the correct rendering and functional
 
 ## Conclusion
 
-The project meets the requirements and functionalities as specified. The issues with API endpoints were effectively mitigated by mocking the data. The application has been manually as well as automatically tested thoroughly to ensure its reliability.
+The project meets the requirements and functionalities as specified. The issues with API endpoints were resolved and now the data is being fetched from endpoints instead of mocked json file. The application has been manually as well as automatically tested thoroughly to ensure its reliability.
 
 ---
 
